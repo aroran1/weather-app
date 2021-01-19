@@ -17,7 +17,7 @@ const request = require('request');
 // trial - 2 (from app.js)
 // request({url: weatherUrl, json: true}, (error, response) => {
 //   if (error) {
-//     console.log(`Unable to coonect to weather service!`);
+//     console.log(`Unable to connect to weather service!`);
 //   } else if (response.body.error) {
 //     console.log(`Weather Service Error ${response.body.error.code}: ${response.body.error.info}`);
 //   } else {
@@ -32,7 +32,7 @@ const request = require('request');
 // const geoCodeUrl = "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoibmlkYXJvcmEiLCJhIjoiY2trNDM5YWRsMWgxajJvbjJia2d2ODRrMCJ9.25cufCiu9ZlK0nlSpi4RlA";
 // request({url: geoCodeUrl, json: true}, (error, response) => {
 //   if(error) {
-//     console.log(`Unable to coonect to geo service!`);
+//     console.log(`Unable to connect to geo service!`);
 //   } else if (response.body.features.length === 0) {
 //     console.log(`Unable to find search. Try another search!`);
 //   } else {
@@ -51,8 +51,8 @@ const geocode = (address, callback) => {
 
   request({url: url, json: true}, (error, response) => {
     if(error) {
-      // console.log(`Unable to coonect to geo service!`);
-      callback('Unable to coonect to geo service!', undefined);
+      // console.log(`Unable to connect to geo service!`);
+      callback('Unable to connect to geo service!', undefined);
     } else if (response.body.features.length === 0) {
       // console.log(`Unable to find search. Try another search!`);
       callback('Unable to find search. Try another search!', undefined);
