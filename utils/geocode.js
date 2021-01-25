@@ -21,23 +21,23 @@ const request = require('request');
 const geocode = (city, callback) => {
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${city}.json?access_token=pk.eyJ1IjoibmlkYXJvcmEiLCJhIjoiY2trNDM5YWRsMWgxajJvbjJia2d2ODRrMCJ9.25cufCiu9ZlK0nlSpi4RlA`;
 
-  request({url: url, json: true}, (error, response) => {
+  request({url, json: true}, (error, { body }) => {
     if(error) {
       // console.log(`Unable to connect to geo service!`);
       callback('Unable to connect to geo service!', undefined);
-    } else if (response.body.features.length === 0) {
+    } else if (body.features.length === 0) {
       // console.log(`Unable to find search. Try another search!`);
       callback('Unable to find search. Try another search!', undefined);
     } else {
-      // const data = response.body;
-      // // console.log(response.body.features[0]);
+      // const data = body;
+      // // console.log(body.features[0]);
       // const longitude = data.features[0].center[0];
       // const latitude = data.features[0].center[1];
       // console.log(`longitude: ${longitude} and latitude: ${latitude}`);
       callback(undefined, {
-        longitude: response.body.features[0].center[0],
-        latitude: response.body.features[0].center[1],
-        location: response.body.features[0].place_name
+        longitude: body.features[0].center[0],
+        latitude: body.features[0].center[1],
+        location: body.features[0].place_name
       });
     }
   });

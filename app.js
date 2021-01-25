@@ -18,13 +18,14 @@ console.log('address', address);
 if(!address) {
   console.log('Please provide the address!');
 } else {
-  geocode(address, (error, geoResponse) => {
-    if(error) {
+  // geocode(address, (error, geoResponse) => { // changed respone to ES6 destructuring
+  geocode(address, (error, {latitude, longitude, location}) => {
+      if(error) {
       return console.log('Error', error);
     }
-    const longitude = geoResponse.longitude;
-    const latitude = geoResponse.latitude;
-    const location = geoResponse.location;
+    // const longitude = geoResponse.longitude;
+    // const latitude = geoResponse.latitude;
+    // const location = geoResponse.location;
   
     forecast(latitude, longitude, (error, forcastResponse) => {
       if(error) {
