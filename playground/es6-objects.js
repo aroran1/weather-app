@@ -37,7 +37,10 @@ const product = {
  // example passing object
 // const transaction = (type, product) => { 
  // example passing destructured object properties
-const transaction = (type, { label, stock }) => {
+const transaction = (type, { label = "Unknown", stock = 0 } = {}) => {
   console.log(type, label, stock);
 }
 transaction('transaction order', product);
+
+// passing default object value
+transaction('transaction order');
